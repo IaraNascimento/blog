@@ -6,13 +6,15 @@ export default class Post {
         image = '',
         text = '',
         author = '',
-        date = new Date()
+        date = new Date(),
+        id = 0
     ) {
         this.title = title;
         this.image = image;
         this.text = text;
         this.author = author;
         this.date = date;
+        this.id = id;
     }
 
 }

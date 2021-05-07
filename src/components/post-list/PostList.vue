@@ -1,9 +1,10 @@
 
 <template>
     <ul>
-        <li v-for="(post, index) in posts" :key="index">
+        <li v-for="(post, index) in randomizeList(posts)" :key="index" @click="goToPost(post)">
+            <p>{{ post.id }}</p>
             <img :src="post.image" />
-            <p>{{ post.title }} - {{ post.text }} - {{ post.author }} - {{ post.date }}</p>
+            <p>{{ post.id }} {{ post.title }} - {{ post.text }} - {{ post.author }} - {{ post.date }}</p>
         </li>
     </ul>
 </template>
@@ -14,12 +15,31 @@ export default {
 
     name: 'PostList',
 
-    props: {
-        posts: {
-            required: true,
-            type: Array
+    computed: {
+        posts() {
+            return this.$store.state.posts;
         }
+    },
+
+    methods: {
+
+        randomizeList(list) {
+            let shuffleArray = [];
+            let listCopy = JSON.parse(JSON.stringify(list));
+            list.forEach(() => {
+                const randomItem = listCopy[Math.floor(Math.random() * listCopy.length)];
+                shuffleArray.push(randomItem);
+                listCopy.splice(listCopy.indexOf(randomItem), 1);
+            });
+            return shuffleArray;
+        },
+
+        goToPost(post) {
+            this.$router.push( '/post/' + post.id );
+        }
+
     }
+
 
 }
 

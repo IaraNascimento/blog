@@ -23,9 +23,29 @@ export default {
         }
     },
 
+    computed: {
+        posts() {
+            return this.$store.state.posts;
+        }
+    },
+
     methods: {
+        
         createPost(post) {
-            this.$emit('createPost', post);
+            let newPost = { ...JSON.parse(JSON.stringify(post)), id: ( this.getBiggerId(this.posts) + 1 )}
+            const posts = [ ...this.$store.state.posts, newPost ];
+            const newState = { ...this.$store.state, posts };
+            this.$store.replaceState(newState);
+        },
+
+        getBiggerId(list) {
+            let highest;
+            list.forEach(item => {
+                if (!highest || ( item.id > highest )) {
+                    highest = item.id;
+                }
+            })
+            return highest;
         }
     }
 
