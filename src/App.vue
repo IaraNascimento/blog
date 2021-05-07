@@ -1,18 +1,24 @@
 
 <template>
     <main id="app">
+        <app-menu></app-menu>
         <router-view></router-view>
     </main>
 </template>
 
 <script>
 
+import Menu from './components/menu/Menu.vue';
 import { LoremIpsum } from 'lorem-ipsum';
 import Post from './domain/Post';
 
 export default {
 
     name: 'App',
+
+    components: {
+        'app-menu': Menu
+    },
 
     created() {
 

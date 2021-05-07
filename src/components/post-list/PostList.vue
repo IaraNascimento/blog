@@ -2,9 +2,8 @@
 <template>
     <ul>
         <li v-for="(post, index) in randomizeList(posts)" :key="index" @click="goToPost(post)">
-            <p>{{ post.id }}</p>
+            <p>{{ post.title }}</p>
             <img :src="post.image" />
-            <p>{{ post.id }} {{ post.title }} - {{ post.text }} - {{ post.author }} - {{ post.date }}</p>
         </li>
     </ul>
 </template>
