@@ -25,7 +25,6 @@ export default {
 
     methods: {
         createPost(post) {
-            console.log(post);
             this.$emit('createPost', post);
         }
     }
