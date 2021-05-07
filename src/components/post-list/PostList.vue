@@ -2,17 +2,22 @@
 <template>
     <ul>
         <li v-for="(post, index) in randomizeList(posts)" :key="index" @click="goToPost(post)">
-            <p>{{ post.title }}</p>
-            <img :src="post.image" />
+            <preview :post="post" />
         </li>
     </ul>
 </template>
 
 <script>
 
+import PreviewPost from './../preview-post/PreviewPost.vue';
+
 export default {
 
     name: 'PostList',
+
+    components: {
+        'preview': PreviewPost
+    },
 
     computed: {
         posts() {
