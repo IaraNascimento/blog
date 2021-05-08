@@ -40,8 +40,8 @@
 
 import { LoremIpsum } from 'lorem-ipsum';
 import PreviewPost from './../preview-post/PreviewPost.vue';
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faTwitter, faInstagram, faLinkedin, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 library.add(faPaperPlane, faFacebook, faTwitter, faInstagram, faLinkedin, faYoutube);

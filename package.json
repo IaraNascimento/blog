@@ -1,6 +1,6 @@
 {
   "name": "blog-project",
-  "version": "1.10.1",
+  "version": "1.11.1",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",

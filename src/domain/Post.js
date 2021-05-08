@@ -16,10 +16,16 @@ export default class Post {
         this.date = date;
         this.id = id;
         this.popular = 0;
+        this.liked = 0;
+        this.comments = [];
     }
 
     addPopular() {
         this.popular ++;
+    }
+
+    addComment(comment) {
+        this.comments.push( comment );
     }
 
 }

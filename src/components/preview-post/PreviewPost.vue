@@ -3,16 +3,32 @@
     <div class="preview" :class="{'preview-s':(size=='small'), 'preview-m':(size=='medium'), 'preview-b':(size=='big')}">
         <h2 :class="{'preview-title-s':(size=='small'), 'preview-title-m':(size=='medium'), 'preview-title-b':(size=='big')}">
             <p class="preview-label" v-show="label">{{ label }}</p>
-            <span class="preview-title-text">{{ post.title }}</span>
+            <span class="preview-title-text" @click="goToPost(post.id, 'title', size)">{{ post.title }}</span>
             <button class="preview-title-btn blog-button" v-show="label" @click="goToPost(post.id)">Keep Reading</button>
         </h2>
-        <img :class="{'preview-image-s':(size=='small'), 'preview-image-m':(size=='medium'), 'preview-image-b':(size=='big')}" :src="post.image" />
+        <img :class="{'preview-image-s':(size=='small'), 'preview-image-m':(size=='medium'), 'preview-image-b':(size=='big')}" :src="post.image"  @click="goToPost(post.id, 'image', size)" />
         <p v-show="(size == 'medium')" class="preview-text">{{ limitChars( post.text ) }}</p>
         <p v-show="(size == 'small')" class="preview-date">{{ countDays( post.date ) }}</p>
+        <span class="preview-like" v-show="(size == 'medium')">
+            <font-awesome-icon v-show="(post.liked <= 0)" :icon="{ prefix: 'far', iconName: 'heart' }" @click="post.liked++" />
+            <font-awesome-icon class="preview-like-liked" v-show="(post.liked > 0)" :icon="{ prefix: 'fas', iconName: 'heart' }" @click="post.liked--" />
+            {{ post.liked }}
+        </span>
+        <span class="preview-message" v-show="(size == 'medium')">
+            <font-awesome-icon v-show="(post.comments.length <= 0)" :icon="{ prefix: 'far', iconName: 'comments' }" />
+            <font-awesome-icon v-show="(post.comments.length > 0)" :icon="{ prefix: 'fas', iconName: 'comments' }" />
+            {{ post.comments.length }}
+        </span>
     </div>
 </template>
 
 <script>
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faHeart as fasHeart, faComments as fasComments } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as farHeart, faComments as farComments } from '@fortawesome/free-regular-svg-icons';
+
+library.add(fasHeart, farHeart, fasComments, farComments);
 
 export default {
 
@@ -53,10 +69,12 @@ export default {
             }
         },
 
-        goToPost(id) {
+        goToPost(id, target, size) {
+            if((target=='title' || target=='image') && size=='big') {
+                return;
+            }
             this.$router.push( '/post/' + id );
         }
-
 
     }
 
@@ -111,6 +129,11 @@ $details: #FF0000;
             font-weight: bold;
             width: 100%;
             text-align: center;
+            transition: all .4s ease;
+            cursor: pointer;
+            &:hover {
+                color: $details;
+            }
         }
         
         &-b {
@@ -155,6 +178,11 @@ $details: #FF0000;
             max-width: 100%;
             max-height: 320px;
             margin: 0 auto 16px auto;
+            transition: all .4s ease;
+            cursor: pointer;
+            &:hover {
+                transform: scale(1.1);
+            }
         }
         
         &-b {
@@ -196,6 +224,31 @@ $details: #FF0000;
             margin-top: 2px;
             margin-right: 12px;
         }
+    }
+
+    &-like,
+    &-message {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    &-like {
+        margin: 8px 0 0 0;
+        > * {
+            cursor: pointer;
+            transition: all .4s ease;
+            opacity: .8;
+            &:hover {
+                opacity: 1;
+            }
+        }
+        &-liked {
+            color: $details;
+        }
+    }
+
+    &-message {
+        margin: 8px 0 0 16px;
     }
 
 }

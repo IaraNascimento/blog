@@ -1,7 +1,7 @@
 
 <template>
     <ul class="list">
-        <li class="list-item" v-for="(post, index) in getLimitedItems(postsShuffled, limitItens)" @click="goToPost(post)" :key="index">
+        <li class="list-item" v-for="(post, index) in getLimitedItems(postsShuffled, limitItens)" :key="index">
             <preview size="medium" :post="post" />
         </li>
     </ul>
@@ -60,10 +60,6 @@ export default {
                 this.$emit('hideShowMoreBtn');
             }
             return list.slice(0, quantity);
-        },
-
-        goToPost(post) {
-            this.$router.push( '/post/' + post.id );
         }
 
     }
@@ -88,17 +84,17 @@ $shadow-color: rgba(0, 0, 0, 0.2);
         margin-top: 16px;
         padding: 24px 16px;
         border-bottom: 1px solid $border-color;
-        cursor: pointer;
-        transition: all .4s ease;
-        border-top: 1px solid transparent;
-        border-left: 1px solid transparent;
-        border-right: 1px solid transparent;
-        box-shadow: 0 3px 6px 0 transparent;
+        // cursor: pointer;
+        // transition: all .4s ease;
+        // border-top: 1px solid transparent;
+        // border-left: 1px solid transparent;
+        // border-right: 1px solid transparent;
+        // box-shadow: 0 3px 6px 0 transparent;
         box-sizing: border-box;
-        &:hover {
-            border: 1px solid $border-color;
-            box-shadow: 0 3px 6px 0 $shadow-color;
-        }
+        // &:hover {
+        //     border: 1px solid $border-color;
+        //     box-shadow: 0 3px 6px 0 $shadow-color;
+        // }
     }
 }
 
