@@ -1,6 +1,9 @@
 
 <template>
     <div class="preview" :class="{'preview-s':(size=='small'), 'preview-m':(size=='medium'), 'preview-b':(size=='big')}">
+        <div class="preview-information" v-show="(size == 'medium')">
+            <span class="preview-information-category">{{ post.category }}</span><span class="preview-information-date"> - {{ formatDate(post.date) }}</span>
+        </div>
         <h2 :class="{'preview-title-s':(size=='small'), 'preview-title-m':(size=='medium'), 'preview-title-b':(size=='big')}">
             <p class="preview-label" v-show="label">{{ label }}</p>
             <span class="preview-title-text" @click="goToPost(post.id, 'title', size)">{{ post.title }}</span>
@@ -74,6 +77,32 @@ export default {
                 return;
             }
             this.$router.push( '/post/' + id );
+        },
+
+        formatDate(date) {
+            const newDate = new Date(date);
+            const day = '' + newDate.getDate();
+            const month = '' + this.getMonth( newDate.getMonth() + 1 );
+            const year = '' + newDate.getFullYear();
+            return month + ' ' + day + ',' + year;
+        },
+
+        getMonth(monthNumber) {
+            switch (monthNumber) {
+                case 1 : return 'Jan';
+                case 2 : return 'Feb';
+                case 3 : return 'Mar';
+                case 4 : return 'Apr';
+                case 5 : return 'May';
+                case 6 : return 'Jun';
+                case 7 : return 'Jul';
+                case 8 : return 'Ago';
+                case 9 : return 'Set';
+                case 10 : return 'Oct';
+                case 11 : return 'Nov';
+                case 12 : return 'Dez';
+            }
+
         }
 
     }
@@ -90,6 +119,7 @@ $preview-text-color: #999;
 $title-m-padding: 48px;
 $date-color: #999;
 $details: #FF0000;
+$info-color: #ccc;
 
 @mixin position() {
     width: calc(100% - #{$title-m-padding});
@@ -114,6 +144,31 @@ $details: #FF0000;
     &-b {
         height: 40vh;
         background-color: black;
+    }
+
+    &-information {
+        font-size: 12px;
+        text-align: center;
+        margin-bottom: 12px;
+
+        &-category,
+        &-date {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        &-category {
+            color: white;
+            background-color: $details;
+            padding: 4px 16px;
+            border-radius: 4px;
+        }
+
+        &-date {
+            margin-top: 4px;
+            margin-left: 4px;
+        }
+
     }
     
     &-title {
@@ -230,25 +285,27 @@ $details: #FF0000;
     &-message {
         display: inline-block;
         vertical-align: top;
+        font-size: 13px;
+        color: $info-color;
     }
 
     &-like {
-        margin: 8px 0 0 0;
+        margin: 24px 0 0 0;
         > * {
             cursor: pointer;
             transition: all .4s ease;
-            opacity: .8;
             &:hover {
-                opacity: 1;
+                opacity: .8;
             }
         }
         &-liked {
+            opacity: .6;
             color: $details;
         }
     }
 
     &-message {
-        margin: 8px 0 0 16px;
+        margin: 24px 0 0 16px;
     }
 
 }

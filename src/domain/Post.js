@@ -7,6 +7,7 @@ export default class Post {
         text = '',
         author = '',
         date = new Date(),
+        category = '',
         id = 0
     ) {
         this.title = title;
@@ -14,6 +15,7 @@ export default class Post {
         this.text = text;
         this.author = author;
         this.date = date;
+        this.category = category;
         this.id = id;
         this.popular = 0;
         this.liked = 0;

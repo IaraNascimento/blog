@@ -34,6 +34,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/01/2021'),
+                'Communication',
                 1
             ),
             new Post(
@@ -42,6 +43,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/02/2021'),
+                'Arts',
                 2
             ),
             new Post(
@@ -50,6 +52,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/03/2021'),
+                'Emotional States',
                 3
             ),
             new Post(
@@ -58,6 +61,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/04/2021'),
+                'Habits',
                 4
             ),
             new Post(
@@ -66,6 +70,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/01/2021'),
+                'Inspiration',
                 5
             ),
             new Post(
@@ -74,6 +79,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/02/2021'),
+                'Journalling',
                 6
             ),
             new Post(
@@ -82,6 +88,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/03/2021'),
+                'Leadership',
                 7
             ),
             new Post(
@@ -90,6 +97,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/04/2021'),
+                'Travel',
                 8
             ),
             new Post(
@@ -98,6 +106,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/01/2021'),
+                'Nature',
                 9
             ),
             new Post(
@@ -106,6 +115,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/02/2021'),
+                'Entertainment',
                 10
             ),
             new Post(
@@ -114,6 +124,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/03/2021'),
+                'Personal',
                 11
             ),
             new Post(
@@ -122,6 +133,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/04/2021'),
+                'Beauty',
                 12
             ),
             new Post(
@@ -130,6 +142,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/01/2021'),
+                'Communication',
                 13
             ),
             new Post(
@@ -138,6 +151,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/02/2021'),
+                'Arts',
                 14
             ),
             new Post(
@@ -146,6 +160,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/03/2021'),
+                'Emotional States',
                 15
             ),
             new Post(
@@ -154,6 +169,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/04/2021'),
+                'Habits',
                 16
             )
         ]});
