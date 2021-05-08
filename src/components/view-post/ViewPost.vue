@@ -1,10 +1,13 @@
 
 <template>
-    <div>
-        <button @click="goBack()">voltar</button>
-        <p>{{ post.id }}</p>
-        <img :src="post.image" />
-        <p>{{ post.id }} {{ post.title }} - {{ post.text }} - {{ post.author }} - {{ post.date }}</p>
+    <div class="view-post">
+        <button class="view-post-btn blog-button" @click="goBack()">voltar</button>
+        <div class="view-post-img">
+            <img :src="post.image" />
+        </div>
+        <h1 class="view-post-title">{{ post.title }}</h1>
+        <p class="view-post-author">{{ post.author }} - {{ post.date }}</p>
+        <p>{{ post.text }}</p>
     </div>
 </template>
 
@@ -31,4 +34,33 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+@import './../../assets/styles/button.css';
+
+.view-post {
+    margin-top: 32px;
+    margin-bottom: 48px;
+    &-btn {
+        margin-bottom: 24px;
+    }
+    &-img {
+        margin-bottom: 24px;
+        text-align: center;
+        img {
+            max-width: 100%;
+
+        }
+    }
+    &-title {
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 8px;
+    }
+    &-author {
+        font-size: 12px;
+        text-align: center;
+        margin-bottom: 24px;
+    }
+}
+
 </style>

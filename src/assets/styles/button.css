@@ -1,0 +1,28 @@
+
+:root {
+    --primery-btn-color: #FF0000;
+}
+
+button.blog-button {
+    background-color: var(--primery-btn-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 32px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.blog-button-sm {
+    display: block;
+    width: 100%;
+}
+
+@media (min-width: 960px) {
+
+    .blog-button-sm {
+        display: inline-block;
+        width: auto;
+    }
+    
+}

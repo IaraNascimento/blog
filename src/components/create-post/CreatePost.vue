@@ -1,11 +1,17 @@
 
 <template>
-    <form @submit.prevent="createPost(post)">
+    <form class="blog-form" @submit.prevent="createPost(post)">
+        <label>Títilo da postagem</label>
         <input placeholder="título..." v-model.lazy="post.title" />
+        <label>Url da imagem</label>
         <input placeholder="imagem..." v-model.lazy="post.image" />
-        <input placeholder="texto..." v-model.lazy="post.text" />
+        <label>Corpo da postagem</label>
+        <textarea placeholder="texto..." v-model.lazy="post.text" />
+        <label>Autor</label>
         <input placeholder="autor..." v-model.lazy="post.author" />
-        <button type="submit">criar</button>
+        <div class="btn-wrap">
+            <button class="blog-button blog-button-sm" type="submit">criar</button>
+        </div>
     </form>
 </template>
 
@@ -36,6 +42,7 @@ export default {
             const posts = [ ...this.$store.state.posts, newPost ];
             const newState = { ...this.$store.state, posts };
             this.$store.replaceState(newState);
+            this.post = new Post();
         },
 
         getBiggerId(list) {
@@ -54,4 +61,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+@import './../../assets/styles/form.css';
+@import './../../assets/styles/button.css';
+
+.btn-wrap {
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+}
+
 </style>

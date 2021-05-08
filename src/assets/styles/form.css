@@ -1,0 +1,23 @@
+
+:root {
+    --border-color: #999;
+}
+
+form.blog-form {
+    margin: 16px;
+}
+
+form.blog-form input,
+form.blog-form textarea {
+    display: block;
+    width: 100%;
+    margin: 8px 0 24px 0;
+    padding: 8px 16px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    border: 1px solid var(--border-color);
+}
+
+form.blog-form label {
+    display: block;
+}
