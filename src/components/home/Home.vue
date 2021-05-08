@@ -3,9 +3,15 @@
     <div>
         <preview-post size="big" label="Latest Post" :post="post" class="home-top"></preview-post>
         <section class="container home-content">
-            <post-list class="home-left"></post-list>
+            <post-list :limitItens="quantityToShow" class="home-left" @hideShowMoreBtn="hideShowMoreBtn()"></post-list>
+            <div class="home-btn-wrap home-btn-mobile">
+                <button v-show="!hideBtn" type="button" class="blog-button-secondary" @click="showMore6()">Load More</button>
+            </div>
             <aside-list class="home-right"></aside-list>
         </section>
+        <div class="container home-btn-wrap home-btn-desktop">
+            <button v-show="!hideBtn" type="button" class="blog-button-secondary" @click="showMore6()">Load More</button>
+        </div>
     </div>
 </template>
 
@@ -25,10 +31,29 @@ export default {
         'aside-list': HomeAside
     },
 
+    data() {
+        return {
+            quantityToShow: 6,
+            hideBtn: false
+        }
+    },
+
     computed: {
         post() {
             return JSON.parse(JSON.stringify(this.$store.state.posts)).sort((a,b) => new Date(b.date) - new Date(a.date))[0];
         }
+    },
+
+    methods: {
+
+        showMore6() {
+            this.quantityToShow = this.quantityToShow + 6;
+        },
+
+        hideShowMoreBtn() {
+            this.hideBtn = true;
+        }
+
     }
 
 }
@@ -38,6 +63,17 @@ export default {
 <style scoped lang="scss">
 
 @import './../../assets/styles/geral.css';
+@import './../../assets/styles/button.css';
+
+.home-btn {
+    &-wrap {
+        text-align: center;
+        margin: 24px 0;
+    }
+    &-desktop {
+        display: none;
+    }
+}
 
 @media (min-width: 960px) {
     .home {
@@ -58,6 +94,14 @@ export default {
             margin-top: 24px;
             margin-bottom: 24px;
             width: 28%;
+        }
+        &-btn {
+            &-mobile {
+                display: none;
+            }
+            &-desktop {
+                display: block;
+            }
         }
     }
 }

@@ -1,7 +1,7 @@
 
 <template>
     <ul class="list">
-        <li class="list-item" v-for="(post, index) in get6Items(randomizeList(posts))" @click="goToPost(post)" :key="index">
+        <li class="list-item" v-for="(post, index) in getLimitedItems(postsShuffled, limitItens)" @click="goToPost(post)" :key="index">
             <preview size="medium" :post="post" />
         </li>
     </ul>
@@ -19,10 +19,27 @@ export default {
         'preview': PreviewPost
     },
 
+    props: {
+        limitItens: {
+            required: true,
+            type: Number
+        }
+    },
+
+    data() {
+        return {
+            postsShuffled: []
+        }
+    },
+
     computed: {
         posts() {
             return this.$store.state.posts;
         }
+    },
+
+    created() {
+        this.postsShuffled = this.randomizeList(this.posts);
     },
 
     methods: {
@@ -38,8 +55,11 @@ export default {
             return shuffleArray;
         },
 
-        get6Items(list) {
-            return list.slice(0, 6);
+        getLimitedItems(list, quantity) {
+            if(quantity > this.posts.length) {
+                this.$emit('hideShowMoreBtn');
+            }
+            return list.slice(0, quantity);
         },
 
         goToPost(post) {
@@ -59,10 +79,9 @@ $shadow-color: rgba(0, 0, 0, 0.2);
 
 .list {
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
-    align-items: center;
     place-content: space-between;
+    align-items: flex-start;
     &-item {
         display: inline-block;
         margin-bottom: 16px;
@@ -86,7 +105,7 @@ $shadow-color: rgba(0, 0, 0, 0.2);
 @media (min-width: 960px) {
 
     .list {
-        max-height: 1680px;
+        // max-height: 1680px;
         &-item {
             max-width: 400px;
             width: calc(50% - 24px);
