@@ -1,8 +1,12 @@
 
 <template>
-    <div class="preview"  :class="(size == 'small')? 'preview-s':'preview-m'">
-        <h2 :class="(size == 'small')? 'preview-title-s':'preview-title-m'">{{ post.title }}</h2>
-        <img :class="(size == 'small')? 'preview-image-s':'preview-image-m'" :src="post.image" />
+    <div class="preview" :class="{'preview-s':(size=='small'), 'preview-m':(size=='medium'), 'preview-b':(size=='big')}">
+        <h2 :class="{'preview-title-s':(size=='small'), 'preview-title-m':(size=='medium'), 'preview-title-b':(size=='big')}">
+            <p class="preview-label" v-show="label">{{ label }}</p>
+            <span class="preview-title-text">{{ post.title }}</span>
+            <button class="preview-title-btn blog-button" v-show="label" @click="goToPost(post.id)">Keep Reading</button>
+        </h2>
+        <img :class="{'preview-image-s':(size=='small'), 'preview-image-m':(size=='medium'), 'preview-image-b':(size=='big')}" :src="post.image" />
         <p v-show="(size == 'medium')" class="preview-text">{{ limitChars( post.text ) }}</p>
         <p v-show="(size == 'small')" class="preview-date">{{ countDays( post.date ) }}</p>
     </div>
@@ -21,6 +25,9 @@ export default {
         },
         size: {
             required: true,
+            type: String
+        },
+        label: {
             type: String
         }
     },
@@ -44,7 +51,13 @@ export default {
             } else {
                 return JSON.stringify(diffDays) + ' days ago';
             }
+        },
+
+        goToPost(id) {
+            this.$router.push( '/post/' + id );
         }
+
+
     }
 
 }
@@ -53,9 +66,12 @@ export default {
 
 <style scoped lang="scss">
 
+@import './../../assets/styles/button.css';
+
 $preview-text-color: #999;
 $title-m-padding: 48px;
 $date-color: #999;
+$details: #FF0000;
 
 @mixin position() {
     width: calc(100% - #{$title-m-padding});
@@ -65,19 +81,29 @@ $date-color: #999;
 .preview {
     position: relative;
     overflow: hidden;
+    
     &-s {
         min-height: 40px;
         display: flex;
         align-items: center;
         flex-wrap: wrap;
     }
+    
     &-m {
         max-width: 480px;
     }
+    
+    &-b {
+        height: 90vh;
+        background-color: black;
+    }
+    
     &-title {
+        
         &-s {
             @include position();
         }
+        
         &-m {
             text-transform: uppercase;
             font-size: 24px;
@@ -86,8 +112,34 @@ $date-color: #999;
             text-align: center;
             margin-bottom: 24px;
         }
+        
+        &-b {
+            position: absolute;
+            top: 40%;
+            left: 10%;
+            color: white;
+            font-size: 32px;
+            z-index: 1;
+
+            .preview-title-text {
+                display: inline-block;
+                margin-bottom: 16px;
+
+                &:before, &:after {
+                    content: ' " ';
+                }
+            }
+
+        }
+
+        &-btn {
+            display: block;
+        }
+
     }
+
     &-image {
+        
         &-s {
             position: absolute;
             top: 0;
@@ -97,23 +149,55 @@ $date-color: #999;
             height: 40px;
             border-radius: 20px;
         }
+        
         &-m {
             display: block;
             max-width: 100%;
             max-height: 320px;
             margin: 0 auto 16px auto;
         }
+        
+        &-b {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            opacity: .5;
+        }
+
     }
+    
     &-text {
         font-size: 12px;
         line-height: 20px;
         color: $preview-text-color;
     }
+    
     &-date {
         @include position();
         font-size: 12px;
         color: $date-color;
     }
+    
+    &-label {
+        font-size: 14px;
+        margin-bottom: 16px;
+        vertical-align: top;
+        &:before {
+            display: inline-block;
+            content: "";
+            width: 0;
+            height: 0;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 6px solid $details;
+            margin-top: 2px;
+            margin-right: 12px;
+        }
+    }
+
 }
 
 @media (min-width: 960px) {

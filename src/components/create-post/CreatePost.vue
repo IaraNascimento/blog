@@ -1,6 +1,6 @@
 
 <template>
-    <form class="blog-form create-post" @submit.prevent="createPost(post)">
+    <form class="container blog-form create-post" @submit.prevent="createPost(post)">
         <label>Títilo da postagem</label>
         <input placeholder="título..." v-model.lazy="post.title" />
         <label>Url da imagem</label>
@@ -62,6 +62,7 @@ export default {
 
 <style scoped lang="scss">
 
+@import './../../assets/styles/geral.css';
 @import './../../assets/styles/form.css';
 @import './../../assets/styles/button.css';
 

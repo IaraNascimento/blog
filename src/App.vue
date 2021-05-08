@@ -1,11 +1,9 @@
 
 <template>
-    <div id="app">
+    <main id="app">
         <app-menu></app-menu>
-        <main class="container">
-            <router-view></router-view>
-        </main>
-    </div>
+        <router-view></router-view>
+    </main>
 </template>
 
 <script>
@@ -108,20 +106,6 @@ $contet-background: #F9F9F9;
     font-family: Arial, sans-serif;
     font-size: 16px;
     background-color: $contet-background;
-}
-
-.container {
-    max-width: 1200px;
-    padding: 0 8px;
-    margin: 0 auto;
-}
-
-@media (min-width: 960px) {
-    
-    .container {
-        width: 90%;
-    }
-    
 }
 
 </style>

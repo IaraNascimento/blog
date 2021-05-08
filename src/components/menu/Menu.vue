@@ -40,7 +40,6 @@ $text-color: #3a3a3a;
         text-align: center;
         width: 100%;
         border-bottom: 1px solid $border-color;
-        margin-bottom: 16px;
     }
     &-item {
         display: inline-block;
@@ -51,16 +50,6 @@ $text-color: #3a3a3a;
             color: $text-color;
         }
     }
-}
-
-@media (min-width: 960px) {
-
-    .menu {
-        &-wrap {
-            margin-bottom: 48px;
-        }
-    }
-
 }
 
 </style>

@@ -3,13 +3,13 @@
     <div class="home-aside">
         <h3 class="home-aside-title">Popular Posts</h3>
         <ul class="home-aside-list">
-            <li class="home-aside-list-item" v-for="(post, index) in popularList(posts)" @click="goToPost(post)" :key="index">
+            <li class="home-aside-list-item" v-for="(post, index) in popularList(posts)" @click="goToPost(post.id)" :key="index">
                 <preview size="small" :post="post" />
             </li>
         </ul>
         <h3 class="home-aside-title">Recent Posts</h3>
         <ul class="home-aside-list">
-            <li class="home-aside-list-item" v-for="(post, index) in latestList(posts)" @click="goToPost(post)" :key="index">
+            <li class="home-aside-list-item" v-for="(post, index) in latestList(posts)" @click="goToPost(post.id)" :key="index">
                 <preview size="small" :post="post" />
             </li>
         </ul>
@@ -46,8 +46,8 @@ export default {
             return newList.slice(0, 5);
         },
 
-        goToPost(post) {
-            this.$router.push( '/post/' + post.id );
+        goToPost(id) {
+            this.$router.push( '/post/' + id );
         }
 
     }
@@ -60,10 +60,13 @@ export default {
 
 $aside-background: white;
 $border-color: #eaeaea;
+$shadow-color: rgba(0, 0, 0, 0.2);
 
 .home-aside {
     background-color: $aside-background;
     padding: 16px;
+    border: 1px solid $border-color;
+    box-shadow: 0 1px 1px 0 $shadow-color;
     &-title {
         border-bottom: 1px solid $border-color;
         margin: 4px 0 8px 0;
@@ -76,7 +79,17 @@ $border-color: #eaeaea;
         flex-direction: column;
         &-item {
             display: inline-block;
-            margin: 16px 0;
+            margin: 8px 0;
+            padding: 8px 0;
+            cursor: pointer;
+            transition: all .4s ease;
+            border: 1px solid transparent;
+            box-shadow: 0 3px 6px 0 transparent;
+            box-sizing: border-box;
+            &:hover {
+                border: 1px solid $border-color;
+                box-shadow: 0 3px 6px 0 $shadow-color;
+            }
         }
     }
 }

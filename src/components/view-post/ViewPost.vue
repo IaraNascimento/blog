@@ -1,11 +1,11 @@
 
 <template>
-    <div class="view-post">
+    <div class="container view-post">
         <button class="view-post-btn blog-button" @click="goBack()">voltar</button>
         <div class="view-post-img">
             <img :src="post.image" />
         </div>
-        <h1 class="view-post-title">{{ post.title }} --> {{ post.popular }} </h1>
+        <h1 class="view-post-title">{{ post.title }} </h1>
         <p class="view-post-author">{{ post.author }} - {{ post.date }}</p>
         <p>{{ post.text }}</p>
     </div>
@@ -39,6 +39,7 @@ export default {
 
 <style scoped lang="scss">
 
+@import './../../assets/styles/geral.css';
 @import './../../assets/styles/button.css';
 
 .view-post {

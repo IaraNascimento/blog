@@ -64,7 +64,8 @@ $shadow-color: rgba(0, 0, 0, 0.2);
     align-items: center;
     &-item {
         display: inline-block;
-        margin-bottom: 24px;
+        margin-bottom: 16px;
+        margin-top: 16px;
         padding: 24px 16px;
         border-bottom: 1px solid $border-color;
         cursor: pointer;
