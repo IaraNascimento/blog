@@ -3,10 +3,6 @@
     --border-color: #999;
 }
 
-form.blog-form {
-    margin: 16px;
-}
-
 form.blog-form input,
 form.blog-form textarea {
     display: block;

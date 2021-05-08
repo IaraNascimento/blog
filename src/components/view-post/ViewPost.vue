@@ -5,7 +5,7 @@
         <div class="view-post-img">
             <img :src="post.image" />
         </div>
-        <h1 class="view-post-title">{{ post.title }}</h1>
+        <h1 class="view-post-title">{{ post.title }} --> {{ post.popular }} </h1>
         <p class="view-post-author">{{ post.author }} - {{ post.date }}</p>
         <p>{{ post.text }}</p>
     </div>
@@ -21,6 +21,10 @@ export default {
         post() {
             return this.$store.state.posts.find(post => this.$route.params.id == post.id);
         }
+    },
+
+    created() {
+        this.post.addPopular();
     },
 
     methods: {

@@ -1,9 +1,9 @@
 
 <template>
-    <div class="preview">
-        <h2 class="preview-title">{{ post.title }}</h2>
-        <img class="preview-image" :src="post.image" />
-        <p class="preview-text">{{ limitChars( post.text ) }}</p>
+    <div class="preview"  :class="(size == 'small')? 'preview-s':'preview-m'">
+        <h2 :class="(size == 'small')? 'preview-title-s':'preview-title-m'">{{ post.title }}</h2>
+        <img :class="(size == 'small')? 'preview-image-s':'preview-image-m'" :src="post.image" />
+        <p v-show="(size == 'medium')" class="preview-text">{{ limitChars( post.text ) }}</p>
     </div>
 </template>
 
@@ -17,6 +17,10 @@ export default {
         post: {
             required: true,
             type: Object
+        },
+        size: {
+            required: true,
+            type: String
         }
     },
 
@@ -36,24 +40,49 @@ export default {
 <style scoped lang="scss">
 
 $preview-text-color: #999;
+$title-m-padding: 48px;
 
 .preview {
     position: relative;
-    max-width: 400px;
     overflow: hidden;
+    &-s {
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+    }
+    &-m {
+        max-width: 480px;
+    }
     &-title {
-        text-transform: uppercase;
-        font-size: 24px;
-        font-weight: bold;
-        width: 100%;
-        text-align: center;
-        margin-bottom: 24px;
+        &-s {
+            width: calc(100% - #{$title-m-padding});
+            padding-left: calc(#{$title-m-padding} + 8px);
+        }
+        &-m {
+            text-transform: uppercase;
+            font-size: 24px;
+            font-weight: bold;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 24px;
+        }
     }
     &-image {
-        display: block;
-        max-width: 100%;
-        max-height: 320px;
-        margin: 0 auto 16px auto;
+        &-s {
+            position: absolute;
+            top: 0;
+            left: 4px;
+            object-fit: cover;
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+        }
+        &-m {
+            display: block;
+            max-width: 100%;
+            max-height: 320px;
+            margin: 0 auto 16px auto;
+        }
     }
     &-text {
         font-size: 12px;

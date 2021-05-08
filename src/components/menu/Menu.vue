@@ -31,7 +31,7 @@ export default {
 
 <style scoped lang="scss">
 
-$border-color: #eee;
+$border-color: #eaeaea;
 $text-color: #3a3a3a;
 
 .menu {

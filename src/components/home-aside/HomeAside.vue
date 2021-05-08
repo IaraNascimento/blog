@@ -1,0 +1,88 @@
+
+<template>
+    <div class="home-aside">
+        <h3 class="home-aside-title">Popular Posts</h3>
+        <ul class="home-aside-list">
+            <li class="home-aside-list-item" v-for="(post, index) in popularList(posts)" @click="goToPost(post)" :key="index">
+                <preview size="small" :post="post" />
+            </li>
+        </ul>
+        <h3 class="home-aside-title">Recent Posts</h3>
+        <ul class="home-aside-list">
+            <li class="home-aside-list-item" v-for="(post, index) in latestList(posts)" @click="goToPost(post)" :key="index">
+                <preview size="small" :post="post" />
+            </li>
+        </ul>
+    </div>
+</template>
+
+<script>
+
+import PreviewPost from './../preview-post/PreviewPost.vue';
+
+export default {
+
+    name: 'HomeAside',
+
+    components: {
+        'preview': PreviewPost
+    },
+
+    computed: {
+        posts() {
+            return this.$store.state.posts;
+        }
+    },
+
+    methods: {
+
+        latestList(list) {
+            let newList = JSON.parse(JSON.stringify(list)).sort((a,b) => new Date(b.date) - new Date(a.date));
+            return newList.slice(0, 3);
+        },
+
+        popularList(list) {
+            let newList = JSON.parse(JSON.stringify(list)).sort((a,b) => b.popular - a.popular);
+            return newList.slice(0, 5);
+        },
+
+        goToPost(post) {
+            this.$router.push( '/post/' + post.id );
+        }
+
+    }
+
+}
+
+</script>
+
+<style scoped lang="scss">
+
+$aside-background: white;
+$border-color: #eaeaea;
+
+.home-aside {
+    background-color: $aside-background;
+    padding: 16px;
+    &-title {
+        border-bottom: 1px solid $border-color;
+        margin: 4px 0 8px 0;
+        padding: 8px 0;
+    }
+    &-list {
+        margin-top: 16px;
+        margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        &-item {
+            display: inline-block;
+            margin: 16px 0;
+        }
+    }
+}
+
+@media (min-width: 960px) {
+
+}
+
+</style>

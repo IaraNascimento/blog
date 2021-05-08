@@ -1,6 +1,6 @@
 
 <template>
-    <form class="blog-form" @submit.prevent="createPost(post)">
+    <form class="blog-form create-post" @submit.prevent="createPost(post)">
         <label>Títilo da postagem</label>
         <input placeholder="título..." v-model.lazy="post.title" />
         <label>Url da imagem</label>
@@ -64,6 +64,10 @@ export default {
 
 @import './../../assets/styles/form.css';
 @import './../../assets/styles/button.css';
+
+.create-post {
+    padding: 16px 16px 40px 16px;
+}
 
 .btn-wrap {
     display: inline-block;

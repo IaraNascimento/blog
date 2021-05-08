@@ -15,6 +15,11 @@ export default class Post {
         this.author = author;
         this.date = date;
         this.id = id;
+        this.popular = 0;
+    }
+
+    addPopular() {
+        this.popular ++;
     }
 
 }
