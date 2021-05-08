@@ -4,6 +4,7 @@
         <h2 :class="(size == 'small')? 'preview-title-s':'preview-title-m'">{{ post.title }}</h2>
         <img :class="(size == 'small')? 'preview-image-s':'preview-image-m'" :src="post.image" />
         <p v-show="(size == 'medium')" class="preview-text">{{ limitChars( post.text ) }}</p>
+        <p v-show="(size == 'small')" class="preview-date">{{ countDays( post.date ) }}</p>
     </div>
 </template>
 
@@ -25,11 +26,24 @@ export default {
     },
 
     methods: {
+
         limitChars(text) {
             if(text.length > 320) {
                 return text.substring(0, 319) + '...';
             }
             return text;
+        },
+
+        countDays(date) {
+            const oneDay = 24 * 60 * 60 * 1000;
+            const diffDays = Math.round(Math.abs((new Date(date) - new Date()) / oneDay));
+            if ( diffDays <= 0 ) {
+                return 'today';
+            } else if ( diffDays === 1 ) {
+                return '1 day ago';
+            } else {
+                return JSON.stringify(diffDays) + ' days ago';
+            }
         }
     }
 
@@ -41,6 +55,12 @@ export default {
 
 $preview-text-color: #999;
 $title-m-padding: 48px;
+$date-color: #999;
+
+@mixin position() {
+    width: calc(100% - #{$title-m-padding});
+    padding-left: calc(#{$title-m-padding} + 8px);
+}
 
 .preview {
     position: relative;
@@ -49,14 +69,14 @@ $title-m-padding: 48px;
         min-height: 40px;
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
     }
     &-m {
         max-width: 480px;
     }
     &-title {
         &-s {
-            width: calc(100% - #{$title-m-padding});
-            padding-left: calc(#{$title-m-padding} + 8px);
+            @include position();
         }
         &-m {
             text-transform: uppercase;
@@ -88,6 +108,11 @@ $title-m-padding: 48px;
         font-size: 12px;
         line-height: 20px;
         color: $preview-text-color;
+    }
+    &-date {
+        @include position();
+        font-size: 12px;
+        color: $date-color;
     }
 }
 
