@@ -94,7 +94,7 @@ $details: #FF0000;
     }
     
     &-b {
-        height: 90vh;
+        height: 40vh;
         background-color: black;
     }
     
@@ -106,11 +106,11 @@ $details: #FF0000;
         
         &-m {
             text-transform: uppercase;
-            font-size: 24px;
+            font-size: 18px;
+            margin-bottom: 18px;
             font-weight: bold;
             width: 100%;
             text-align: center;
-            margin-bottom: 24px;
         }
         
         &-b {
@@ -203,8 +203,15 @@ $details: #FF0000;
 @media (min-width: 960px) {
 
     .preview {
+        &-b {
+            height: 90vh;
+        }
         &-image {
             max-height: 240px;
+        }
+        &-title-m {
+            font-size: 24px;
+            margin-bottom: 24px;
         }
     }
 

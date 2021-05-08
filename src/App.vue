@@ -1,14 +1,18 @@
 
 <template>
     <main id="app">
-        <app-menu></app-menu>
-        <router-view></router-view>
+        <div class="app-body">
+            <app-menu></app-menu>
+            <router-view></router-view>
+        </div>
+        <app-footer class="app-footer"></app-footer>
     </main>
 </template>
 
 <script>
 
 import Menu from './components/menu/Menu.vue';
+import Footer from './components/footer/Footer.vue';
 import { LoremIpsum } from 'lorem-ipsum';
 import Post from './domain/Post';
 
@@ -17,7 +21,8 @@ export default {
     name: 'App',
 
     components: {
-        'app-menu': Menu
+        'app-menu': Menu,
+        'app-footer': Footer
     },
 
     created() {
@@ -107,6 +112,21 @@ $contet-background: #F9F9F9;
     font-size: 16px;
     background-color: $contet-background;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app{
+
+    &-body {
+        min-height: 100%;
+        flex: 1 0 auto;
+    }
+
+    &-footer {
+        flex-shrink: 0;
+    }
+
 }
 
 </style>

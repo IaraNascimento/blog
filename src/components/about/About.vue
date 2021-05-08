@@ -77,6 +77,9 @@ $aside-width: 280px;
 
 @media (min-width: 960px) {
     .about {
+        &-wrap {
+            padding-bottom: 80px;
+        }
         &-title {
             text-align: center;
             font-size: 32px;
