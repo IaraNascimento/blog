@@ -68,7 +68,7 @@ export default {
 .home-btn {
     &-wrap {
         text-align: center;
-        margin: 24px 0;
+        margin: 24px auto;
     }
     &-desktop {
         display: none;
