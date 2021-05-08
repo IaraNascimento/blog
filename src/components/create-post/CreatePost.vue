@@ -1,18 +1,21 @@
 
 <template>
-    <form class="container blog-form create-post" @submit.prevent="createPost(post)">
-        <label>Títilo da postagem</label>
-        <input placeholder="título..." v-model.lazy="post.title" />
-        <label>Url da imagem</label>
-        <input placeholder="imagem..." v-model.lazy="post.image" />
-        <label>Corpo da postagem</label>
-        <textarea placeholder="texto..." v-model.lazy="post.text" />
-        <label>Autor</label>
-        <input placeholder="autor..." v-model.lazy="post.author" />
-        <div class="btn-wrap">
-            <button class="blog-button blog-button-sm" type="submit">criar</button>
-        </div>
-    </form>
+    <div class="container create-post">
+        <button class="create-post-btn blog-button" @click="goBack()">back</button>
+        <form class="blog-form" @submit.prevent="createPost(post)">
+            <label>Title</label>
+            <input type="text" placeholder="title..." v-model.lazy="post.title" />
+            <label>Image Url</label>
+            <input type="text" placeholder="image..." v-model.lazy="post.image" />
+            <label>Post Body</label>
+            <textarea placeholder="text..." v-model.lazy="post.text" />
+            <label>Author</label>
+            <input placeholder="author..." v-model.lazy="post.author" />
+            <div class="btn-wrap">
+                <button class="blog-button blog-button-sm" type="submit">create</button>
+            </div>
+        </form>
+    </div>
 </template>
 
 <script>
@@ -68,6 +71,10 @@ export default {
 
 .create-post {
     padding: 16px 16px 40px 16px;
+    
+    &-btn {
+        margin-bottom: 24px;
+    }
 }
 
 .btn-wrap {

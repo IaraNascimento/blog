@@ -1,7 +1,7 @@
 
 <template>
     <div class="container view-post">
-        <button class="view-post-btn blog-button" @click="goBack()">voltar</button>
+        <button class="view-post-btn blog-button" @click="goBack()">back</button>
         <div class="view-post-img">
             <img :src="post.image" />
         </div>

@@ -106,6 +106,7 @@ $contet-background: #F9F9F9;
     font-family: Arial, sans-serif;
     font-size: 16px;
     background-color: $contet-background;
+    min-height: 100vh;
 }
 
 </style>
