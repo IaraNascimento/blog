@@ -62,6 +62,7 @@ $shadow-color: rgba(0, 0, 0, 0.2);
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
+    place-content: space-between;
     &-item {
         display: inline-block;
         margin-bottom: 16px;

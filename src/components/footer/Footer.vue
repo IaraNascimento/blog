@@ -14,20 +14,21 @@
                     </li>
                 </ul>
             </div>
-            <!--
             <div class="footer-part">
                 <h4 class="footer-title">Subscribe to our news letter</h4>
-                <form class="footer-newsletter">
-                    <input placeholder="Enter your email here" />
+                <form class="footer-newsletter" @submit.prevent="sendNewsLetter(email)">
+                    <input type="email" placeholder="Enter your email here" v-model.lazy="email" />
+                    <font-awesome-icon class="footer-newsletter-icon" icon="paper-plane" @click="sendNewsLetter(email)" />
                 </form>
                 <h4 class="footer-title">Fallow us on</h4>
                 <ul class="footer-social">
                     <li class="footer-social-item" v-for="(social, index) in socials" :key="index">
-                        <a :href="social.link" target="_blank">{{ social.title }}</a>
+                        <a :href="social.link" target="_blank" :alt="social.title">
+                            <font-awesome-icon :icon="{ prefix: 'fab', iconName: social.icon }" />
+                        </a>
                     </li>
                 </ul>
             </div>
-            -->
         </section>
         <section class="footer-final">
             <p class="container">Copyright @IaraNascimentoSztybe - 2021 - All Rights Reserved</p>
@@ -39,6 +40,11 @@
 
 import { LoremIpsum } from 'lorem-ipsum';
 import PreviewPost from './../preview-post/PreviewPost.vue';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
+import { faFacebook, faTwitter, faInstagram, faLinkedin, faYoutube } from '@fortawesome/free-brands-svg-icons';
+
+library.add(faPaperPlane, faFacebook, faTwitter, faInstagram, faLinkedin, faYoutube);
 
 export default {
 
@@ -51,13 +57,13 @@ export default {
     data() {
         return {
             socials: [
-                {  title:'face', icon: '', link:'' },
-                {  title:'twit', icon: '', link:'' },
-                {  title:'inst', icon: '', link:'' },
-                {  title:'phot', icon: '', link:'' },
-                {  title:'link', icon: '', link:'' },
-                {  title:'yout', icon: '', link:'' }
-            ]
+                {  title:'face', icon: 'facebook', link:'https://www.facebook.com/' },
+                {  title:'twit', icon: 'twitter', link:'https://twitter.com/' },
+                {  title:'inst', icon: 'instagram', link:'https://www.instagram.com/' },
+                {  title:'phot', icon: 'linkedin', link:'https://www.linkedin.com/' },
+                {  title:'yout', icon: 'youtube', link:'https://www.youtube.com/' }
+            ],
+            email: ''
         }
     },
 
@@ -79,6 +85,11 @@ export default {
 
         goToPost(id) {
             this.$router.push( '/post/' + id );
+        },
+
+        sendNewsLetter(email) {
+            console.log(email);
+            this.email = '';
         }
 
     }
@@ -137,10 +148,41 @@ $newsletter-back: #3A4A54;
             width: 100%;
             box-sizing: border-box;
         }
+        &-icon {
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+            padding: 10px;
+            opacity: .6;
+            transition: all .4s ease;
+            &:hover {
+                opacity: 1;
+            }
+        }
     }
     &-social {
         &-item {
             display: inline-block;
+            transition: all .4s ease;
+            background-color: $newsletter-back;
+            border-radius: 50%;
+            margin: 0 6px 0 0;
+            cursor: pointer;
+            a {
+                display: inline-block;
+                padding: 8px;
+                width: 32px;
+                height: 32px;
+                color: $footer-color;
+                box-sizing: border-box;
+                &:hover {
+                    color: $footer-color;
+                } 
+            }
+            &:hover {
+                transform: rotate3d(0, 1, 0, 360deg);
+            }
         }
     }
     &-final {
@@ -162,12 +204,19 @@ $newsletter-back: #3A4A54;
         display: flex;
         justify-content: space-between;
         &-wrap {
-            padding-bottom: 140px;
+            padding-bottom: 96px;
         }
         &-part {
-            min-width: calc(33% - 40px);
-            margin: 0 20px;
-            max-width: 200px;
+            width: calc(30% - 40px);
+            &:first-child {
+                width: 25%;
+            }
+            &:nth-child(2) {
+                width: 20%;
+            }
+            &:last-child {
+                width: 30%;
+            }
         }
     }
 

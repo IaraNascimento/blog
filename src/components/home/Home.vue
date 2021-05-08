@@ -52,6 +52,7 @@ export default {
         }
         &-left {
             width: 72%;
+            margin-right: 32px;
         }
         &-right {
             margin-top: 24px;
