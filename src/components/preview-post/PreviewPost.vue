@@ -142,7 +142,7 @@ $info-color: #ccc;
     }
     
     &-b {
-        height: 40vh;
+        min-height: 40vh;
         background-color: black;
     }
 
@@ -192,8 +192,8 @@ $info-color: #ccc;
         }
         
         &-b {
-            position: absolute;
-            top: 40%;
+            position: relative;
+            margin-top: 40%;
             left: 10%;
             color: white;
             font-size: 32px;
@@ -201,7 +201,8 @@ $info-color: #ccc;
 
             .preview-title-text {
                 display: inline-block;
-                margin-bottom: 16px;
+                margin-bottom: 32px;
+                max-width: 600px;
 
                 &:before, &:after {
                     content: ' " ';
@@ -212,6 +213,7 @@ $info-color: #ccc;
 
         &-btn {
             display: block;
+            margin-bottom: 24px;
         }
 
     }
@@ -262,6 +264,8 @@ $info-color: #ccc;
         @include position();
         font-size: 12px;
         color: $date-color;
+        margin-bottom: 4px;
+        margin-top: 4px;
     }
     
     &-label {
@@ -319,9 +323,17 @@ $info-color: #ccc;
         &-image {
             max-height: 240px;
         }
-        &-title-m {
-            font-size: 24px;
-            margin-bottom: 24px;
+        &-title {
+            &-m {
+                font-size: 24px;
+                margin-bottom: 24px;
+            }
+            &-b {
+                position: absolute;
+                top: 40%;
+                margin-top: 0;
+            }
+
         }
     }
 

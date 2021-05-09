@@ -110,6 +110,7 @@ $shadow-color: rgba(0, 0, 0, 0.2);
             }
             input,
             label {
+                cursor: pointer;
                 vertical-align: top;
             }
             input {

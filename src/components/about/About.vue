@@ -68,6 +68,7 @@ $aside-width: 280px;
         }
     }
     &-content {
+        margin-bottom: 32px;
         p {
             line-height: 20px;
             margin-bottom: 8px;

@@ -171,9 +171,9 @@ $newsletter-back: #3A4A54;
             cursor: pointer;
             a {
                 display: inline-block;
-                padding: 8px;
-                width: 32px;
-                height: 32px;
+                padding: 12px;
+                width: 40px;
+                height: 40px;
                 color: $footer-color;
                 box-sizing: border-box;
                 &:hover {

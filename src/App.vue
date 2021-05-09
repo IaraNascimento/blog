@@ -226,6 +226,15 @@ export default {
                 new Date('05/02/2021'),
                 categorys[1],
                 22
+            ),
+            new Post(
+                'All animals are created equal, but some animals are more equal then others',
+                'https://wallpaperaccess.com/full/647966.jpg',
+                new LoremIpsum().generateSentences(10),
+                'iara nascimento sztybe',
+                new Date('05/08/2021'),
+                categorys[1],
+                23
             )
         ]});
     }
