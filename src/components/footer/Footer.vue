@@ -134,12 +134,13 @@ $newsletter-back: #3A4A54;
     }
     &-list {
         &-item {
-            margin: 8px 0;
+            margin: 8px 0 16px 0;
         }
     }
     &-newsletter {
         position: relative;
         margin-bottom: 24px;
+        margin-top: 8px;
         input {
             background-color: $newsletter-back;
             color: $footer-color-secondary;
@@ -162,6 +163,7 @@ $newsletter-back: #3A4A54;
         }
     }
     &-social {
+        margin-top: 8px;
         &-item {
             display: inline-block;
             transition: all .4s ease;

@@ -8,6 +8,9 @@
             <p class="preview-label" v-show="label">{{ label }}</p>
             <span class="preview-title-text" @click="goToPost(post.id, 'title', size)">{{ post.title }}</span>
             <button class="preview-title-btn blog-button" v-show="label" @click="goToPost(post.id)">Keep Reading</button>
+            <div  class="preview-change" v-show="(size=='big')">
+                <span @click="prev()">Prev</span> | <span @click="next()">Next</span>
+            </div>
         </h2>
         <img :class="{'preview-image-s':(size=='small'), 'preview-image-m':(size=='medium'), 'preview-image-b':(size=='big')}" :src="post.image"  @click="goToPost(post.id, 'image', size)" />
         <p v-show="(size == 'medium')" class="preview-text">{{ limitChars( post.text ) }}</p>
@@ -103,6 +106,14 @@ export default {
                 case 12 : return 'Dez';
             }
 
+        },
+
+        prev() {
+            this.$emit('prev');
+        },
+
+        next() {
+            this.$emit('next');
         }
 
     }
@@ -175,6 +186,8 @@ $info-color: #ccc;
         
         &-s {
             @include position();
+            line-height: 20px;
+            font-size: 14px;
         }
         
         &-m {
@@ -265,11 +278,11 @@ $info-color: #ccc;
         font-size: 12px;
         color: $date-color;
         margin-bottom: 4px;
-        margin-top: 4px;
+        margin-top: 8px;
     }
     
     &-label {
-        font-size: 14px;
+        font-size: 13px;
         margin-bottom: 16px;
         vertical-align: top;
         &:before {
@@ -310,6 +323,22 @@ $info-color: #ccc;
 
     &-message {
         margin: 24px 0 0 16px;
+    }
+
+    &-change {
+        margin-bottom: 32px;
+        font-size: 16px;
+        opacity: .8;
+        span {
+            font-size: 13px;
+            cursor: pointer;
+            opacity: .8;
+            transition: all .4s ease;
+            padding: 4px;
+            &:hover {
+                opacity: 1;
+            }
+        }
     }
 
 }

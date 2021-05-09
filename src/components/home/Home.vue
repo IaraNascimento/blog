@@ -1,7 +1,7 @@
 
 <template>
     <div>
-        <preview-post size="big" label="Latest Post" :post="post" class="home-top"></preview-post>
+        <preview-post size="big" label="Latest Post" :post="post" class="home-top" @prev="prev()" @next="next()"></preview-post>
         <section class="container home-content">
             <post-list :limitItens="quantityToShow" class="home-left" @hideShowMoreBtn="hideShowMoreBtn($event)"></post-list>
             <div class="home-btn-wrap home-btn-mobile">
@@ -34,13 +34,14 @@ export default {
     data() {
         return {
             quantityToShow: 6,
-            hideBtn: false
+            hideBtn: false,
+            postId: 0
         }
     },
 
     computed: {
         post() {
-            return JSON.parse(JSON.stringify(this.$store.state.posts)).sort((a,b) => new Date(b.date) - new Date(a.date))[0];
+            return JSON.parse(JSON.stringify(this.$store.state.posts)).sort((a,b) => new Date(b.date) - new Date(a.date))[this.postId];
         }
     },
 
@@ -56,6 +57,24 @@ export default {
 
         hideShowMoreBtn(value) {
             this.hideBtn = value;
+        },
+
+        prev() {
+            if(this.postId === 0){
+                const listPosts = JSON.parse(JSON.stringify(this.$store.state.posts));
+                this.postId = listPosts.length - 1;
+            } else {
+                this.postId--;
+            }
+        },
+
+        next() {
+            const listPosts = JSON.parse(JSON.stringify(this.$store.state.posts));
+            if (this.postId === (listPosts.length - 1)) {
+                this.postId = 0;
+            } else {
+                this.postId++;
+            }
         }
 
     }
