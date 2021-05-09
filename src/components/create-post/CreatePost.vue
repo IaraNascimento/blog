@@ -62,6 +62,10 @@ export default {
                 }
             })
             return highest;
+        },
+
+        goBack() {
+            this.$router.push('/');
         }
 
     }
