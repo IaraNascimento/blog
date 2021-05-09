@@ -17,7 +17,8 @@ const router = new VueRouter({ routes, mode: 'history' })
 
 const store = new Vuex.Store({
     state: {
-        posts: []
+        posts: [],
+        category: ''
     }
 });
 

@@ -15,6 +15,7 @@ import Menu from './components/menu/Menu.vue';
 import Footer from './components/footer/Footer.vue';
 import { LoremIpsum } from 'lorem-ipsum';
 import Post from './domain/Post';
+import { categorys } from './domain/CategoryList';
 
 export default {
 
@@ -34,7 +35,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/01/2021'),
-                'Communication',
+                categorys[0],
                 1
             ),
             new Post(
@@ -43,7 +44,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/02/2021'),
-                'Arts',
+                categorys[1],
                 2
             ),
             new Post(
@@ -52,7 +53,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/03/2021'),
-                'Emotional States',
+                categorys[2],
                 3
             ),
             new Post(
@@ -61,7 +62,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/04/2021'),
-                'Habits',
+                categorys[3],
                 4
             ),
             new Post(
@@ -70,7 +71,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/01/2021'),
-                'Inspiration',
+                categorys[4],
                 5
             ),
             new Post(
@@ -79,7 +80,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/02/2021'),
-                'Journalling',
+                categorys[0],
                 6
             ),
             new Post(
@@ -88,7 +89,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/03/2021'),
-                'Leadership',
+                categorys[1],
                 7
             ),
             new Post(
@@ -97,7 +98,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/04/2021'),
-                'Travel',
+                categorys[2],
                 8
             ),
             new Post(
@@ -106,7 +107,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/01/2021'),
-                'Nature',
+                categorys[3],
                 9
             ),
             new Post(
@@ -115,7 +116,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/02/2021'),
-                'Entertainment',
+                categorys[4],
                 10
             ),
             new Post(
@@ -124,7 +125,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/03/2021'),
-                'Personal',
+                categorys[0],
                 11
             ),
             new Post(
@@ -133,7 +134,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/04/2021'),
-                'Beauty',
+                categorys[1],
                 12
             ),
             new Post(
@@ -142,7 +143,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/01/2021'),
-                'Communication',
+                categorys[2],
                 13
             ),
             new Post(
@@ -151,7 +152,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/02/2021'),
-                'Arts',
+                categorys[3],
                 14
             ),
             new Post(
@@ -160,7 +161,7 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/03/2021'),
-                'Emotional States',
+                categorys[4],
                 15
             ),
             new Post(
@@ -169,8 +170,62 @@ export default {
                 new LoremIpsum().generateSentences(10),
                 'iara nascimento sztybe',
                 new Date('05/04/2021'),
-                'Habits',
+                categorys[0],
                 16
+            ),
+            new Post(
+                'Friends 5',
+                'https://i.ibb.co/C6GmthN/viagensdatalita-friends-seriadofriends-FRIENDS-s-rie-netflix-seriado-warner-seriado-friends25anos.jpg',
+                new LoremIpsum().generateSentences(10),
+                'iara nascimento sztybe',
+                new Date('05/02/2021'),
+                categorys[1],
+                17
+            ),
+            new Post(
+                'Friends 6',
+                'https://i.ibb.co/C6GmthN/viagensdatalita-friends-seriadofriends-FRIENDS-s-rie-netflix-seriado-warner-seriado-friends25anos.jpg',
+                new LoremIpsum().generateSentences(10),
+                'iara nascimento sztybe',
+                new Date('05/02/2021'),
+                categorys[1],
+                18
+            ),
+            new Post(
+                'Friends 7',
+                'https://i.ibb.co/C6GmthN/viagensdatalita-friends-seriadofriends-FRIENDS-s-rie-netflix-seriado-warner-seriado-friends25anos.jpg',
+                new LoremIpsum().generateSentences(10),
+                'iara nascimento sztybe',
+                new Date('05/02/2021'),
+                categorys[1],
+                19
+            ),
+            new Post(
+                'Friends 8',
+                'https://i.ibb.co/C6GmthN/viagensdatalita-friends-seriadofriends-FRIENDS-s-rie-netflix-seriado-warner-seriado-friends25anos.jpg',
+                new LoremIpsum().generateSentences(10),
+                'iara nascimento sztybe',
+                new Date('05/02/2021'),
+                categorys[1],
+                20
+            ),
+            new Post(
+                'Friends 9',
+                'https://i.ibb.co/C6GmthN/viagensdatalita-friends-seriadofriends-FRIENDS-s-rie-netflix-seriado-warner-seriado-friends25anos.jpg',
+                new LoremIpsum().generateSentences(10),
+                'iara nascimento sztybe',
+                new Date('05/02/2021'),
+                categorys[1],
+                21
+            ),
+            new Post(
+                'Friends 10',
+                'https://i.ibb.co/C6GmthN/viagensdatalita-friends-seriadofriends-FRIENDS-s-rie-netflix-seriado-warner-seriado-friends25anos.jpg',
+                new LoremIpsum().generateSentences(10),
+                'iara nascimento sztybe',
+                new Date('05/02/2021'),
+                categorys[1],
+                22
             )
         ]});
     }

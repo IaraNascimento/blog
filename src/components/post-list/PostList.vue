@@ -1,10 +1,13 @@
 
 <template>
-    <ul class="list">
-        <li class="list-item" v-for="(post, index) in getLimitedItems(postsShuffled, limitItens)" :key="index">
-            <preview size="medium" :post="post" />
-        </li>
-    </ul>
+    <div>
+        <ul class="list">
+            <li class="list-item" v-for="(post, index) in getLimitedItems(postsShuffled, limitItens, category)" :key="index">
+                <preview size="medium" :post="post" />
+            </li>
+        </ul>
+        <p v-show="getLimitedItems(postsShuffled, limitItens, category).length === 0" class="list-empty">Not Found =/</p>
+    </div>
 </template>
 
 <script>
@@ -35,6 +38,9 @@ export default {
     computed: {
         posts() {
             return this.$store.state.posts;
+        },
+        category() {
+            return this.$store.state.category;
         }
     },
 
@@ -55,11 +61,19 @@ export default {
             return shuffleArray;
         },
 
-        getLimitedItems(list, quantity) {
-            if(quantity > this.posts.length) {
-                this.$emit('hideShowMoreBtn');
+        getLimitedItems(list, quantity, category) {
+            let filterList = [];
+            if (category) {
+                filterList = list.filter(item => item.category == category).slice(0, quantity);
+            } else {
+                filterList = list.slice(0, quantity);
             }
-            return list.slice(0, quantity);
+            if(quantity > filterList.length) {
+                this.$emit('hideShowMoreBtn', true);
+            } else {
+                this.$emit('hideShowMoreBtn', false);
+            }
+            return filterList;
         }
 
     }
@@ -84,27 +98,26 @@ $shadow-color: rgba(0, 0, 0, 0.2);
         margin-top: 16px;
         padding: 24px 16px;
         border-bottom: 1px solid $border-color;
-        // cursor: pointer;
-        // transition: all .4s ease;
-        // border-top: 1px solid transparent;
-        // border-left: 1px solid transparent;
-        // border-right: 1px solid transparent;
-        // box-shadow: 0 3px 6px 0 transparent;
         box-sizing: border-box;
-        // &:hover {
-        //     border: 1px solid $border-color;
-        //     box-shadow: 0 3px 6px 0 $shadow-color;
-        // }
+    }
+    &-empty {
+        margin: 16px 0;
+        width: 100%;
+        text-align: center;
     }
 }
 
 @media (min-width: 960px) {
 
     .list {
-        // max-height: 1680px;
         &-item {
             max-width: 400px;
             width: calc(50% - 24px);
+        }
+        &-empty {
+            margin: 56px 0;
+            font-weight: bold;
+            font-size: 24px;
         }
     }
 

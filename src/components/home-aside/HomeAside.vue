@@ -1,6 +1,13 @@
 
 <template>
     <div class="home-aside">
+        <h3 class="home-aside-title">Categories</h3>
+        <ul class="home-aside-categories">
+            <li class="home-aside-categories-item" v-for="(categ, index) in categorys" :key="index" @click="setCategory(categ)">
+                <input type="radio" :id="categ" name="category" :value="categ">
+                <label :for="categ">{{ categ }}</label>
+            </li>
+        </ul>
         <h3 class="home-aside-title">Popular Posts</h3>
         <ul class="home-aside-list">
             <li class="home-aside-list-item" v-for="(post, index) in popularList(posts)" @click="goToPost(post.id)" :key="index">
@@ -19,6 +26,7 @@
 <script>
 
 import PreviewPost from './../preview-post/PreviewPost.vue';
+import { categorys } from './../../domain/CategoryList';
 
 export default {
 
@@ -26,6 +34,12 @@ export default {
 
     components: {
         'preview': PreviewPost
+    },
+
+    data() {
+        return {
+            categorys
+        }
     },
 
     computed: {
@@ -48,6 +62,10 @@ export default {
 
         goToPost(id) {
             this.$router.push( '/post/' + id );
+        },
+
+        setCategory(category) {
+            this.$store.replaceState({ ...this.$store.state, category });
         }
 
     }
@@ -63,15 +81,46 @@ $border-color: #eaeaea;
 $shadow-color: rgba(0, 0, 0, 0.2);
 
 .home-aside {
+    
     background-color: $aside-background;
     padding: 16px;
     border: 1px solid $border-color;
     box-shadow: 0 1px 1px 0 $shadow-color;
+    
     &-title {
         border-bottom: 1px solid $border-color;
         margin: 4px 0 8px 0;
-        padding: 8px 0;
+        padding: 8px 0 16px 0;
+        font-weight: bold;
+        font-size: 14px;
     }
+
+    &-categories {
+        margin-top: 24px;
+        margin-bottom: 56px;
+
+        &-item {
+            font-size: 14px;
+            margin-bottom: 24px;
+            opacity: .8;
+            transition: all .4s ease;
+            cursor: pointer;
+            &:hover {
+                opacity: 1;
+            }
+            input,
+            label {
+                vertical-align: top;
+            }
+            input {
+                margin: 0;
+            }
+            label {
+                margin-left: 16px;
+            }
+        }
+    }
+
     &-list {
         margin-top: 16px;
         margin-bottom: 40px;

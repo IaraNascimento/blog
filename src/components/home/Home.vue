@@ -3,7 +3,7 @@
     <div>
         <preview-post size="big" label="Latest Post" :post="post" class="home-top"></preview-post>
         <section class="container home-content">
-            <post-list :limitItens="quantityToShow" class="home-left" @hideShowMoreBtn="hideShowMoreBtn()"></post-list>
+            <post-list :limitItens="quantityToShow" class="home-left" @hideShowMoreBtn="hideShowMoreBtn($event)"></post-list>
             <div class="home-btn-wrap home-btn-mobile">
                 <button v-show="!hideBtn" type="button" class="blog-button-secondary" @click="showMore6()">Load More</button>
             </div>
@@ -44,14 +44,18 @@ export default {
         }
     },
 
+    created() {
+        this.quantityToShow = 6;
+    },
+
     methods: {
 
         showMore6() {
             this.quantityToShow = this.quantityToShow + 6;
         },
 
-        hideShowMoreBtn() {
-            this.hideBtn = true;
+        hideShowMoreBtn(value) {
+            this.hideBtn = value;
         }
 
     }

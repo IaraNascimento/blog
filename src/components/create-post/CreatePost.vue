@@ -3,14 +3,18 @@
     <div class="container create-post">
         <button class="create-post-btn blog-button" @click="goBack()">back</button>
         <form class="blog-form" @submit.prevent="createPost(post)">
-            <label>Title</label>
-            <input type="text" placeholder="title..." v-model.lazy="post.title" />
-            <label>Image Url</label>
-            <input type="text" placeholder="image..." v-model.lazy="post.image" />
-            <label>Post Body</label>
-            <textarea placeholder="text..." v-model.lazy="post.text" />
-            <label>Author</label>
-            <input placeholder="author..." v-model.lazy="post.author" />
+            <label for="title">Title</label>
+            <input type="text" id="title" placeholder="title..." v-model.lazy="post.title" />
+            <label for="category">Category</label>
+            <select id="category" v-model.lazy="post.category">
+                <option v-for="(category, index) in categorys" :key="index">{{ category }}</option>
+            </select>
+            <label for="image">Image Url</label>
+            <input type="text" id="image" placeholder="image..." v-model.lazy="post.image" />
+            <label for="text">Post Body</label>
+            <textarea id="text" placeholder="text..." v-model.lazy="post.text" />
+            <label for="author">Author</label>
+            <input type="text" id="author" placeholder="author..." v-model.lazy="post.author" />
             <div class="btn-wrap">
                 <button class="blog-button blog-button-sm" type="submit">create</button>
             </div>
@@ -21,6 +25,7 @@
 <script>
 
 import Post from './../../domain/Post';
+import { categorys } from './../../domain/CategoryList';
 
 export default {
 
@@ -28,7 +33,8 @@ export default {
 
     data() {
         return {
-            post: new Post()
+            post: new Post(),
+            categorys
         }
     },
 
@@ -57,6 +63,7 @@ export default {
             })
             return highest;
         }
+
     }
 
 }

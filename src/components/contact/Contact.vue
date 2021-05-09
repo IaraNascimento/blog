@@ -3,14 +3,14 @@
     <div class="container contact">
         <button class="contact-btn blog-button" @click="goBack()">back</button>
         <form class="blog-form" @submit.prevent="sendMessage(contact)">
-            <label>Name</label>
-            <input type="text" placeholder="name..." v-model.lazy="contact.name" />
-            <label>E-mail</label>
-            <input type="email" placeholder="email..." v-model.lazy="contact.email" />
-            <label>Phone</label>
-            <input type="phone" placeholder="phone..." v-model.lazy="contact.phone" />
-            <label>Message</label>
-            <textarea placeholder="message..." v-model.lazy="contact.message" />
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="name..." v-model.lazy="contact.name" />
+            <label for="emal">E-mail</label>
+            <input type="email" id="email" placeholder="email..." v-model.lazy="contact.email" />
+            <label for="phone">Phone</label>
+            <input type="phone" id="phone" placeholder="phone..." v-model.lazy="contact.phone" />
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="message..." v-model.lazy="contact.message" />
             <vue-recaptcha class="contact-recaptcha" sitekey="6Le-V8saAAAAADbP91rACtDfa76ppLPP8BLP-_By" :loadRecaptchaScript="true"></vue-recaptcha>
             <div class="btn-wrap">
                 <button class="blog-button blog-button-sm" type="submit">send</button>
