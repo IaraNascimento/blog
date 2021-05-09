@@ -90,7 +90,7 @@ $shadow-color: rgba(0, 0, 0, 0.2);
 .list {
     display: flex;
     flex-wrap: wrap;
-    place-content: space-between;
+    justify-content: center;
     align-items: flex-start;
     &-item {
         display: inline-block;
@@ -110,9 +110,10 @@ $shadow-color: rgba(0, 0, 0, 0.2);
 @media (min-width: 960px) {
 
     .list {
+        justify-content: space-between;
         &-item {
-            max-width: 400px;
-            width: calc(50% - 24px);
+            max-width: 480px;
+            width: calc(52% - 24px);
         }
         &-empty {
             margin: 56px 0;

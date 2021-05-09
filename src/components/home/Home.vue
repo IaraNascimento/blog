@@ -110,13 +110,13 @@ export default {
             flex-wrap: nowrap;
         }
         &-left {
-            width: 72%;
+            width: 76%;
             margin-right: 32px;
         }
         &-right {
             margin-top: 24px;
             margin-bottom: 24px;
-            width: 28%;
+            width: 24%;
         }
         &-btn {
             &-mobile {

@@ -15,30 +15,21 @@
         <img :class="{'preview-image-s':(size=='small'), 'preview-image-m':(size=='medium'), 'preview-image-b':(size=='big')}" :src="post.image"  @click="goToPost(post.id, 'image', size)" />
         <p v-show="(size == 'medium')" class="preview-text">{{ limitChars( post.text ) }}</p>
         <p v-show="(size == 'small')" class="preview-date">{{ countDays( post.date ) }}</p>
-        <span class="preview-like" v-show="(size == 'medium')">
-            <font-awesome-icon v-show="(post.liked <= 0)" :icon="{ prefix: 'far', iconName: 'heart' }" @click="post.liked++" />
-            <font-awesome-icon class="preview-like-liked" v-show="(post.liked > 0)" :icon="{ prefix: 'fas', iconName: 'heart' }" @click="post.liked--" />
-            {{ post.liked }}
-        </span>
-        <span class="preview-message" v-show="(size == 'medium')">
-            <font-awesome-icon v-show="(post.comments.length <= 0)" :icon="{ prefix: 'far', iconName: 'comments' }" />
-            <font-awesome-icon v-show="(post.comments.length > 0)" :icon="{ prefix: 'fas', iconName: 'comments' }" />
-            {{ post.comments.length }}
-        </span>
+        <popularity class="preview-popularity" v-show="(size == 'medium')" :post="post" ></popularity>
     </div>
 </template>
 
 <script>
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faHeart as fasHeart, faComments as fasComments } from '@fortawesome/free-solid-svg-icons';
-import { faHeart as farHeart, faComments as farComments } from '@fortawesome/free-regular-svg-icons';
-
-library.add(fasHeart, farHeart, fasComments, farComments);
+import PreviewPostPopularity from './components/PreviewPostPopularity.vue';
 
 export default {
 
     name: 'PreviewPost',
+
+    components: {
+        'popularity': PreviewPostPopularity
+    },
 
     props: {
         post: {
@@ -298,31 +289,8 @@ $info-color: #ccc;
         }
     }
 
-    &-like,
-    &-message {
-        display: inline-block;
-        vertical-align: top;
-        font-size: 13px;
-        color: $info-color;
-    }
-
-    &-like {
-        margin: 24px 0 0 0;
-        > * {
-            cursor: pointer;
-            transition: all .4s ease;
-            &:hover {
-                opacity: .8;
-            }
-        }
-        &-liked {
-            opacity: .6;
-            color: $details;
-        }
-    }
-
-    &-message {
-        margin: 24px 0 0 16px;
+    &-popularity {
+        margin-top: 24px;
     }
 
     &-change {
