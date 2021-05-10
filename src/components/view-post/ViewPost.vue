@@ -96,16 +96,17 @@ export default {
 
 .view-post {
     position: relative;
-    margin-bottom: 48px;
+    margin-bottom: 80px;
     
     &-btn {
         position: absolute;
         top: 24px;
         left: 0;
+        width: 100%;
     }
     
     &-img {
-        margin-bottom: 24px;
+        margin-bottom: 48px;
         text-align: center;
         background-position: center;
         background-attachment: fixed;
@@ -141,6 +142,8 @@ export default {
     &-content {
         text-align: justify;
         line-height: 24px;
+        margin-top: 48px;
+        margin-bottom: 48px;
         &:first-letter {
             margin-left: 32px;
         }
@@ -161,7 +164,7 @@ export default {
             }
         }
     }
-    
+
 }
 
 </style>

@@ -4,7 +4,7 @@
         <h3 class="home-aside-title">Categories</h3>
         <ul class="home-aside-categories">
             <li class="home-aside-categories-item" v-for="(categ, index) in categorys" :key="index" @click="setCategory(categ)">
-                <input type="radio" :id="categ" name="category" :value="categ">
+                <input type="radio" :id="categ" name="category" :value="categ" v-model="category">
                 <label :for="categ">{{ categ }}</label>
             </li>
         </ul>
@@ -45,6 +45,9 @@ export default {
     computed: {
         posts() {
             return this.$store.state.posts;
+        },
+        category() {
+            return this.$store.state.category;
         }
     },
 

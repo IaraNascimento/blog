@@ -1,14 +1,16 @@
 
 <template>
-    <article class="container about-wrap">
+    <article class="about-wrap">
         <h1 class="about-title">Iara Nascimento Sztybe</h1>
-        <aside class="about-aside">
-            <img class="about-image" src="./../../assets/images/iara.jpg" alt="foto da iara"/>
-            <blockquote class="about-quote">Queria mesmo era ser mestre pokémon, mas mal consegui treinar os pombos do parque.</blockquote>
-        </aside>
-        <div class="about-content">
-            <p>Líder e Desenvolvedora especializada em front-end com 6 anos de experiência. Entusiasta de metodologias ágeis, automação, testes e códigos elegantes. Meu ambiente de trabalho ideal é transparente, descentralizado, descontraído, colaborativo, flexível e receptivo à inovação.</p>
-            <p>Fã de GOT, Scrubs, Drag Race e Friends. Também gosto de livros de ficção e de animes. Assisto as mesmas coisas inúmeras vezes! Gosto de tocar violão e de jogar TCG de Pokémon e Magic. Meu rolê preferido é sair para comer e conversar com amigos.</p>
+        <div class="container">
+            <aside class="about-aside">
+                <img class="about-image" src="./../../assets/images/iara.jpg" alt="foto da iara"/>
+                <blockquote class="about-quote">Queria mesmo era ser mestre pokémon, mas mal consegui treinar os pombos do parque.</blockquote>
+            </aside>
+            <div class="about-content">
+                <p>Líder e Desenvolvedora especializada em front-end com 6 anos de experiência. Entusiasta de metodologias ágeis, automação, testes e códigos elegantes. Meu ambiente de trabalho ideal é transparente, descentralizado, descontraído, colaborativo, flexível e receptivo à inovação.</p>
+                <p>Fã de GOT, Scrubs, Drag Race e Friends. Também gosto de livros de ficção e de animes. Assisto as mesmas coisas inúmeras vezes! Gosto de tocar violão e de jogar TCG de Pokémon e Magic. Meu rolê preferido é sair para comer e conversar com amigos.</p>
+            </div>
         </div>
     </article>
 </template>
@@ -29,6 +31,10 @@ export default {
 
 $aside-width: 280px;
 
+.container {
+    position: relative
+}
+
 .about {
     &-wrap {
         position: relative;
@@ -36,15 +42,16 @@ $aside-width: 280px;
     &-title {
         font-size: 24px;
         padding: 160px 8px;
-        background-image: url('./../../assets/images/background.jpg');
         margin-bottom: 140px;
+        font-weight: bold;
+        background-image: url('./../../assets/images/background.jpg');
+        background-attachment: fixed;
         background-repeat: no-repeat;
         background-size: cover;
-        font-weight: bold;
     }
     &-aside {
         position: absolute;
-        top: 280px;
+        top: -200px;
         left: 0;
         width: calc(100% - 24px);
         display: flex;
@@ -72,6 +79,10 @@ $aside-width: 280px;
         p {
             line-height: 20px;
             margin-bottom: 8px;
+            text-align: justify;
+            &:first-letter {
+                margin-left: 36px;
+            }
         }
     }
 }
@@ -84,13 +95,14 @@ $aside-width: 280px;
         &-title {
             text-align: center;
             font-size: 32px;
-            margin: 0 0 32px 0;
+            margin: 0 0 48px 0;
         }
         &-aside {
             width: $aside-width;
             display: block;
             text-align: center;
             background-color: transparent;
+            top: -120px;
         }
         &-image {
             margin-bottom: 20px;
